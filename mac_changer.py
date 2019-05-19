@@ -20,6 +20,15 @@ if __name__=="__main__" :
 
     interface = input("interface: ")
     print("original MAC address: ")
-    subprocess.call(["ifconfig", interface, "|","grep", "ether"])
+    cmd = "ifconfig "+interface+" | grep ether"
+    #print(cmd)
+    ps = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    output = ps.communicate()[0]
+    
+    #ps = subprocess.Popen(('ifconfig',interface),stdout=subprocess.PIPE)
+    #output = subprocess.check_output(('grep',interface),stdin=ps.stdout)
+    #ps.wait()
+    print(output)
+    #subprocess.call(["ifconfig", interface, "|","grep", "ether"])
     print("[+] change the mac address of interface: "+interface+" to "+mac_addr)
     mac_changer(interface, mac_addr)

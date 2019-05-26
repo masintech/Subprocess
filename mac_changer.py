@@ -39,9 +39,16 @@ if __name__=="__main__" :
     options= get_arguments()
     #ifconfig_result = subprocess.check_output(['ifconfig', options.interface])
     current_mac = get_current_mac(options.interface)
-    print("The original MAC address is ",current_mac)
-    mac_changer(options.interface, options.new_mac)
-    print("Now the MAC address has changed to ",current_mac)
+    print("The original MAC address is "+str(current_mac))
+
+    
+
+    mac_changer(options.interface,options.new_mac)
+    if current_mac != get_current_mac(options.interface):
+        print("Now the MAC address has changed to "+str(get_current_mac(options.interface)))
+    else:
+        print("[-] MAC address not changed successfully")
+
 
 
 

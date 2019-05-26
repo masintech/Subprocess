@@ -41,7 +41,10 @@ if __name__=="__main__" :
     current_mac = get_current_mac(options.interface, options.new_mac)
     print("The original MAC address is ",current_mac)
     mac_changer(interface, options.new_mac)
-    print("Now the MAC address has changed to ",current_mac)
+    if current_mac != get_current_mac(options.interface, options.new_mac):
+        print("Now the MAC address has changed to ",current_mac)
+    else:
+        print("[-] MAC address not changed successfully")
 
 
 

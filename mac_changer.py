@@ -32,3 +32,4 @@ if __name__=="__main__" :
     #subprocess.call(["ifconfig", interface, "|","grep", "ether"])
     print("[+] change the mac address of interface: "+interface+" to "+mac_addr)
     mac_changer(interface, mac_addr)
+    
